@@ -1,164 +1,277 @@
 :root {
-    --brand-dark: #1a1a1a;
-    --brand-accent: #d84315;
-    --brand-gold: #ffb300;
-    --bg-cream: #fffaf5;
+    /* --- Strict Monochrome Palette --- */
+    --black: #000000;
+    --near-black: #1a1a1a;
+    --gray-dark: #4a4a4a;
+    --gray-mid: #999999;
+    --gray-light: #e0e0e0;
     --white: #ffffff;
-    --text-body: #4a4a4a;
-    --radius: 12px;
-    --shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --bg-main: #fcfcfc; /* Very light gray for subtle contrast */
+
+    /* --- Essential Accent (Functional Only) --- */
+    --whatsapp-green: #25D366; /* Retained only for the action button */
+    
+    /* --- Modern Spacing & Transitions --- */
+    --spacing-md: 30px;
+    --spacing-lg: 60px;
+    --transition-sharp: all 0.2s ease-in-out;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-cream);
-    color: var(--brand-dark);
+    /* Using a distinct serif font for Devanagari to look more premium/traditional */
+    font-family: 'Poppins', 'Noto Serif Devanagari', serif;
     margin: 0;
-    line-height: 1.6;
+    background: var(--bg-main);
+    color: var(--near-black);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* --- High Contrast Header --- */
 header {
-    background-color: var(--brand-dark);
+    background: var(--black);
     color: var(--white);
-    padding: 60px 20px;
     text-align: center;
+    padding: 100px 20px;
+    position: relative;
 }
 
-header h1 { margin: 0; letter-spacing: 1px; font-weight: 600; }
-header p { color: var(--brand-gold); margin-top: 10px; font-style: italic; opacity: 0.9; }
+header h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: none; /* Removed shadow for cleanliness */
+}
 
-/* --- Navigation --- */
+header p {
+    font-weight: 300;
+    color: var(--gray-mid);
+    margin-top: 10px;
+}
+
+/* --- Minimalist Sticky Navigation --- */
 nav {
     background: var(--white);
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border-bottom: 1px solid var(--gray-light); /* Thin line separator */
+    padding: 0;
 }
 
 nav a {
-    display: inline-block;
-    padding: 20px;
-    color: var(--brand-dark);
+    padding: 20px 30px;
     text-decoration: none;
+    color: var(--near-black);
     font-weight: 600;
-    font-size: 0.85rem;
     text-transform: uppercase;
-    transition: 0.3s;
-    border-bottom: 3px solid transparent; /* Prepare for active state */
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    transition: var(--transition-sharp);
+    display: inline-block;
+    border-bottom: 2px solid transparent; /* Prepare for active state */
 }
 
-nav a:hover, nav a.active { 
-    color: var(--brand-accent); 
-    border-bottom: 3px solid var(--brand-accent); /* Modern active indicator */
+nav a:hover {
+    color: var(--black);
+    background: var(--bg-main);
 }
 
-/* --- Layout Sections --- */
-.page-heading {
+nav a.active {
+    color: var(--black);
+    border-bottom: 2px solid var(--black); /* Strict black line */
+}
+
+/* --- Structured Content Sections --- */
+.page-heading, .banner {
     text-align: center;
-    padding: 60px 20px;
+    padding: var(--spacing-lg) 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    margin: 30px;
+}
+
+.page-heading h2, .banner h3 {
+    color: var(--black);
+    font-size: 2.8em;
+    margin: 0;
+    font-weight: 700;
+}
+
+/* --- Minimalist Grid Cards --- */
+.card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    padding: 40px;
+    margin: 30px auto;
     max-width: 800px;
+    transition: var(--transition-sharp);
+}
+
+.card:hover {
+    border-color: var(--gray-mid);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card h2, .card h3 {
+    color: var(--black);
+    border-left: 4px solid var(--black); /* Strong visual accent */
+    padding-left: 15px;
+}
+
+/* --- Modern Product Showcase --- */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: var(--spacing-lg) 30px;
+    gap: 40px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
-.banner {
-    padding: 40px;
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    max-width: 800px;
-    margin: 20px auto 60px;
-    text-align: center;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    max-width: 1100px;
-    margin: 0 auto 80px;
-    padding: 0 20px;
-}
-
-/* --- Components --- */
 .product {
     background: var(--white);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
-    border: 1px solid #eee;
+    border: 1px solid var(--gray-light);
+    padding: 0; /* Full-bleed image look */
+    transition: var(--transition-sharp);
     display: flex;
     flex-direction: column;
 }
 
-.product:hover { transform: translateY(-10px); }
+.product:hover {
+    transform: translateY(-5px);
+    border-color: var(--black);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
 
-.product img { width: 100%; height: 240px; object-fit: cover; }
+.product img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    /* Optional: Convert image to grayscale initially, reveal color on hover */
+    filter: grayscale(100%); 
+    transition: var(--transition-sharp);
+}
 
-.product-info { padding: 30px; text-align: left; flex-grow: 1; }
+.product:hover img {
+    filter: grayscale(0%); /* Reveal the "true" color of the chutney */
+}
 
-.product h3 { margin: 0 0 10px 0; font-size: 1.5rem; }
+.product-info {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info h3 {
+    color: var(--black);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
 
 .price {
-    font-weight: 600;
-    color: var(--brand-accent);
-    font-size: 1.2rem;
     display: block;
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--black);
     margin-bottom: 15px;
+    font-family: serif; /* Classy look for the price */
 }
 
-.product ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-    font-size: 0.95rem;
-    color: var(--text-body);
+/* --- Monochrome Tags --- */
+.tag {
+    background: var(--near-black);
+    color: var(--white);
+    padding: 8px 16px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 1px;
 }
 
-.product li { 
-    margin: 10px 0; 
+/* --- WhatsApp Button (Retained Color for Functionality) --- */
+.whatsapp-btn {
+    display: block;
+    background: var(--whatsapp-green);
+    color: var(--white);
+    padding: 15px;
+    text-decoration: none;
+    margin-top: auto; /* Push to bottom of product info */
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition-sharp);
+}
+
+.whatsapp-btn:hover {
+    background: #1da851; /* Slightly darker green */
+    transform: scale(1.02);
+}
+
+/* --- Card Grid Layout --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+.card-grid .card {
+    margin: 0; /* Override default card margin */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* --- Strict Monochrome Footer --- */
+footer {
+    background: var(--black);
+    color: var(--gray-mid);
+    text-align: center;
+    padding: 50px 20px;
+    margin-top: var(--spacing-lg);
+}
+
+footer p {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.2em; }
+    nav a { padding: 10px 15px; font-size: 0.8em; display: inline-block; }
+    .page-heading h2, .banner h3 { font-size: 1.8em; }
+    .card, .products, .card-grid { margin: 15px; padding: 20px; }
+    .product img { height: 200px; }
+}
+.whatsapp-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-}
-
-/* --- Buttons --- */
-.whatsapp-btn, .order-btn {
-    display: block;
-    background-color: #25D366;
-    color: var(--white);
-    padding: 16px;
-    text-align: center;
-    text-decoration: none;
+    background: #25D366;
+    color: white;
+    padding: 14px;
     border-radius: 8px;
+    text-decoration: none;
     font-weight: 600;
     transition: 0.3s;
-    border: none;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.whatsapp-btn:hover { filter: brightness(1.05); }
-
-/* --- Footer --- */
-footer {
-    background: var(--brand-dark);
-    color: #888;
-    text-align: center;
-    padding: 40px;
-    font-size: 0.9rem;
+.whatsapp-btn i {
+    font-size: 18px;
 }
 
-/* --- Mobile Fixes --- */
-@media (max-width: 600px) {
-    header { padding: 40px 20px; }
-    nav a { padding: 15px 10px; font-size: 0.75rem; }
-    .page-heading { padding: 30px 20px; }
+.whatsapp-btn:hover {
+    transform: scale(1.05);
 }
-
-/* Utilities */
-main { padding: 20px; }
-hr { border: 0; border-top: 1px solid #f0f0f0; margin: 20px 0; }
-strong { color: var(--brand-accent); }
