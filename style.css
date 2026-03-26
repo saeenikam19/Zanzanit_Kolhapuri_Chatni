@@ -50,19 +50,25 @@ header p {
     margin-top: 10px;
 }
 
-/* --- Minimalist Sticky Navigation --- */
+/* --- Minimalist Horizontal Navigation --- */
 nav {
     background: var(--white);
     text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--gray-light); /* Thin line separator */
-    padding: 0;
+    border-bottom: 1px solid var(--gray-light); /* Horizontal separator */
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 }
 
 nav a {
-    padding: 20px 30px;
+    padding: 12px 18px;
     text-decoration: none;
     color: var(--near-black);
     font-weight: 600;
@@ -71,12 +77,21 @@ nav a {
     letter-spacing: 1px;
     transition: var(--transition-sharp);
     display: inline-block;
-    border-bottom: 2px solid transparent; /* Prepare for active state */
+    border-bottom: 2px solid transparent;
+    margin: 0 8px;
+    border-radius: 8px;
 }
 
 nav a:hover {
     color: var(--black);
     background: var(--bg-main);
+    border-bottom-color: var(--black);
+}
+
+nav a.active {
+    color: var(--black);
+    border-bottom-color: var(--black);
+    background: var(--gray-light);
 }
 
 nav a.active {
@@ -252,7 +267,23 @@ footer p {
     header { padding: 60px 18px; }
     header h1 { font-size: 2.4em; }
     header p { font-size: 1.1em; }
-    nav a { padding: 12px 14px; font-size: 0.88em; display: block; margin: 5px 0; }
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--gray-light);
+        display: block;
+    }
+    nav a {
+        display: block;
+        padding: 12px 14px;
+        font-size: 0.88em;
+        margin: 5px 0;
+        border-left: none;
+        border-bottom: 1px solid var(--gray-light);
+        border-radius: 0;
+    }
     .page-heading h2, .banner h3 { font-size: 2.2em; }
     .card, .products, .card-grid, .main-content, .about-content, .contact-content { margin: 14px auto; padding: 18px; }
     .products { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
@@ -262,41 +293,56 @@ footer p {
 }
 
 @media (max-width: 670px) {
+    body { padding: 0 15px; }
+    header { padding: 60px 18px; }
+    header h1 { font-size: 2.4em; }
+    header p { font-size: 1.1em; }
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-right: none;
+        border-bottom: 1px solid var(--gray-light);
+        display: block;
+    }
+    nav a {
+        display: block;
+        padding: 12px 14px;
+        font-size: 0.88em;
+        margin: 5px 0;
+        border-left: none;
+        border-bottom: 1px solid var(--gray-light);
+        border-radius: 0;
+    }
+    .page-heading h2, .banner h3 { font-size: 2.2em; }
+    .card, .products, .card-grid, .main-content, .about-content, .contact-content { margin: 14px auto; padding: 18px; }
+    .products { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .product img { height: 240px; }
+    .product-info { padding: 24px; }
+    .whatsapp-btn { padding: 13px; }
+}
+
+@media (max-width: 480px) {
     body { padding: 0 10px; }
     header { padding: 50px 15px; }
     header h1 { font-size: 2em; }
     header p { font-size: 1em; }
-    nav a { padding: 10px 12px; font-size: 0.85em; display: block; margin: 4px 0; }
-    .page-heading h2, .banner h3 { font-size: 1.8em; }
-    .card, .products, .card-grid, .main-content, .about-content, .contact-content { margin: 10px auto; padding: 16px; }
-    .products { grid-template-columns: 1fr; }
-    .product img { height: 200px; }
-    .product-info { padding: 18px; }
-    .whatsapp-btn { padding: 12px; font-size: 0.95em; }
-}
-
-@media (max-width: 480px) {
-    .products { padding: 12px; }
+    nav a { font-size: 0.85em; padding: 10px 12px; }
+    .products { grid-template-columns: 1fr; padding: 12px; }
     .product img { height: 180px; }
     .product-info { padding: 14px; }
+    .whatsapp-btn { padding: 10px; font-size: 0.9em; }
     .price { font-size: 1.2em; }
     .product h3 { font-size: 1.2em; }
     .tag { top: 10px; right: 10px; padding: 6px 12px; font-size: 0.75em; }
-    .whatsapp-btn { font-size: 0.9em; padding: 10px; }
 }
 
-@media (max-width: 600px) {
-    header { padding: 45px 12px; }
+@media (max-width: 360px) {
     header h1 { font-size: 1.7em; }
-    nav a { font-size: 0.8em; padding: 8px 10px; }
-    .page-heading h2, .banner h3 { font-size: 1.5em; }
-    .products { grid-template-columns: 1fr; padding: 20px 10px; }
-    .card-grid { grid-template-columns: 1fr; padding: 10px; }
-    .card { padding: 16px; margin: 10px 0; }
-    .product img { height: 180px; }
-    .product-info { padding: 16px; }
-    .whatsapp-btn { padding: 12px; font-size: 0.9em; }
-    footer { padding: 30px 12px; }
+    nav a { font-size: 0.82em; padding: 8px 10px; }
+    .product img { height: 160px; }
+    .product-info { padding: 12px; }
+    .whatsapp-btn { font-size: 0.85em; padding: 9px; }
 }
 
 .whatsapp-btn {
