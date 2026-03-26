@@ -247,13 +247,31 @@ footer p {
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 900px) {
-    header h1 { font-size: 2.2em; }
-    nav a { padding: 10px 15px; font-size: 0.8em; display: inline-block; }
+@media (max-width: 670px) {
+    body { padding: 0 10px; }
+    header { padding: 60px 15px; }
+    header h1 { font-size: 2em; }
+    header p { font-size: 1em; }
+    nav a { padding: 10px 12px; font-size: 0.85em; display: block; margin: 4px 0; }
     .page-heading h2, .banner h3 { font-size: 1.8em; }
-    .card, .products, .card-grid { margin: 15px; padding: 20px; }
-    .product img { height: 200px; }
+    .card, .products, .card-grid, .main-content, .about-content, .contact-content { margin: 10px; padding: 16px; }
+    .product img { height: 220px; }
 }
+
+@media (max-width: 600px) {
+    header { padding: 45px 12px; }
+    header h1 { font-size: 1.7em; }
+    nav a { font-size: 0.8em; padding: 8px 10px; }
+    .page-heading h2, .banner h3 { font-size: 1.5em; }
+    .products { grid-template-columns: 1fr; padding: 20px 10px; }
+    .card-grid { grid-template-columns: 1fr; padding: 10px; }
+    .card { padding: 16px; margin: 10px 0; }
+    .product img { height: 180px; }
+    .product-info { padding: 16px; }
+    .whatsapp-btn { padding: 12px; font-size: 0.9em; }
+    footer { padding: 30px 12px; }
+}
+
 .whatsapp-btn {
     display: flex;
     align-items: center;
