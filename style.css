@@ -298,21 +298,19 @@ footer p {
     header h1 { font-size: 2.4em; }
     header p { font-size: 1.1em; }
     nav {
-        width: 100%;
-        height: auto;
-        position: relative;
-        border-right: none;
-        border-bottom: 1px solid var(--gray-light);
-        display: block;
+        display: flex;
+        flex-direction: row;   /* 🔥 keep horizontal */
+        justify-content: flex-start;
+        overflow-x: auto;      /* ✅ allow scroll if needed */
+        white-space: nowrap;   /* prevent wrapping */
+        padding: 8px 10px;
     }
+
     nav a {
-        display: block;
-        padding: 12px 14px;
-        font-size: 0.88em;
-        margin: 5px 0;
-        border-left: none;
-        border-bottom: 1px solid var(--gray-light);
-        border-radius: 0;
+        display: inline-block;
+        font-size: 0.8em;      /* smaller text */
+        padding: 10px 12px;
+        margin: 0 5px;
     }
     .page-heading h2, .banner h3 { font-size: 2.2em; }
     .card, .products, .card-grid, .main-content, .about-content, .contact-content { margin: 14px auto; padding: 18px; }
