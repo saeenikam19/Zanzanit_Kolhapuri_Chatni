@@ -165,14 +165,10 @@ nav a.active {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    /* Optional: Convert image to grayscale initially, reveal color on hover */
-    filter: grayscale(100%); 
+    filter: none; /* ✅ no grayscale */
     transition: var(--transition-sharp);
 }
 
-.product:hover img {
-    filter: grayscale(0%); /* Reveal the "true" color of the chutney */
-}
 
 .product-info {
     padding: 30px;
